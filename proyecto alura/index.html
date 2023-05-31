@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<html lang="es-GT">
+
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Codificador</title>
+    </head>
+    <body>
+        <div class="superior">
+            <div class="logo">
+                <img class="imgLogo" src="Logo.png">
+                <h1 class="titleLogo">Encriptador de Mensajes</h1>
+            </div>
+            <div class="areaIzquierda">
+                <input class="textImput" id="textImput" name="textImput" type="text" placeholder="ingrese el texto aqui">
+            </div>
+            <div class="areaDerecha">
+                <img class="imgDer" id ="imgDer" src="Muñeco.png">
+                <h1 class="referencia" id="referencia">No se a encontrado ningun texto</h1>
+                <textarea id="textOutput" name="textOutput" placeholder="ingrese texto"></textarea> 
+            </div>
+            <div class="botoneraIzquierda">
+                <p class="noteBottom">&#128712;Solo letras minusulas y sin caracteres</p>
+                <button type="button" id="btEncriptar" onclick="cifrar()">Encriptar</button>
+                <button type="button" id="btDesencriptar" onclick="descifrar()">Desencriptar</button>
+                
+            </div>
+            <div class="botoneraDerecha">
+                <button type="button" id="btCopiar" onclick="copiar()">Copiar</button>
+            </div>
+        </div>
+        <footer>
+            <p class="piePagina">&#169;Desarrollador Sabdiel Lopez</p>
+        </footer>
+    </body>
+</html>
+<script>
+    function cifrar () {
+        var texto = document.getElementById("textImput").value.toLowerCase();
+
+        var textCifrafo = texto.replace(/e/igm,"enter");
+        var textCifrafo = textCifrafo.replace(/o/igm,"ober");
+        var textCifrafo = textCifrafo.replace(/i/igm,"imes");
+        var textCifrafo = textCifrafo.replace(/a/igm,"ai");
+        var textCifrafo = textCifrafo.replace(/u/igm,"ufat");
+
+        document.getElementById("imgDer").style.display = "none";
+        document.getElementById("referencia").style.display = "none";
+        document.getElementById("textOutput").innerHTML = textCifrafo;
+    }
+    function descifrar () {
+        var texto = document.getElementById ("textImput").value.toLowerCase();
+
+        var textCifrafo = texto.replace(/enter/igm,"e");
+        var textCifrafo = textCifrafo.replace(/ober/igm,"o");
+        var textCifrafo = textCifrafo.replace(/imes/igm,"i");
+        var textCifrafo = textCifrafo.replace(/ai/igm,"a");
+        var textCifrafo = textCifrafo.replace(/ufat/igm,"u");
+
+        document.getElementById("imgDer").style.display = "none";
+        document.getElementById("referencia").style.display = "none";
+        document.getElementById("textOutput").innerHTML = textCifrafo;
+    }
+    function copiar () {
+        var contenido = document.querySelector("#textOutput");
+            contenido.select();
+            document.execCommand("copy");
+            alert("Texto Copiado");
+    }
+</script>
